@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇯🇵 Sugi一家 2026 名古屋親子冒險手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8341C;
+    --navy: #1A2744;
+    --gold: #F5A623;
+    --cream: #FBF6EE;
+    --mint: #3DB89C;
+    --light-gray: #F0EDE8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--navy);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 64px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(232,52,28,.35) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(61,184,156,.2) 0%, transparent 50%);
+  }
+  .hero-flag { font-size: 56px; margin-bottom: 8px; position: relative; }
+  .hero h1 {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: clamp(28px, 6vw, 52px);
+    letter-spacing: .04em;
+    line-height: 1.2;
+    position: relative;
+    color: #ffffff;
+    text-shadow: 0 2px 18px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.5);
+  }
+  .hero h1 span { color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .hero-sub {
+    margin-top: 16px;
+    font-size: 15px;
+    color: rgba(255,255,255,.95);
+    text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    position: relative;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    margin-top: 24px; position: relative;
+  }
+  .badge {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 99px;
+    padding: 6px 18px;
+    font-size: 13px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ── OVERVIEW CARDS ── */
+  .section { padding: 40px 20px; max-width: 900px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    border-left: 5px solid var(--red);
+    padding-left: 14px;
+    margin-bottom: 24px;
+  }
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+  .ov-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 18px;
+    box-shadow: 0 2px 12px rgba(26,39,68,.08);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .ov-icon { font-size: 28px; }
+  .ov-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #888; }
+  .ov-value { font-weight: 700; font-size: 16px; color: var(--navy); }
+
+  /* ── TIPS BOX ── */
+  .tips-box {
+    background: linear-gradient(135deg, #fff7ed, #fffbf5);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+  }
+  .tips-box h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px; font-weight: 900;
+    color: var(--navy); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tips-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .tips-list li {
+    padding: 10px 14px;
+    background: white;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    display: flex; gap: 10px;
+  }
+  .tips-list li .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── DAY CARDS ── */
+  .days-wrapper { display: flex; flex-direction: column; gap: 28px; }
+  .day-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,39,68,.10);
+  }
+  .day-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-header::after {
+    content: attr(data-emoji);
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font-size: 48px; opacity: .18;
+  }
+  .day-num {
+    background: white;
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 22px;
+    color: var(--navy);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  }
+  .day-title-block {}
+  .day-date { font-size: 12px; opacity: .8; }
+  .day-title { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 900; }
+
+  .day-body { padding: 20px 24px; }
+  .spots { display: flex; flex-direction: column; gap: 14px; }
+  .spot {
+    display: flex; gap: 14px;
+    background: var(--light-gray);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .spot-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .spot-info {}
+  .spot-name {
+    font-weight: 700; font-size: 15px; color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .spot-meta { font-size: 12px; color: #666; }
+  .spot-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag {
+    font-size: 11px; padding: 3px 10px;
+    border-radius: 99px; font-weight: 700;
+    white-space: nowrap;
+  }
+  .tag-transport { background: #e0f2fe; color: #0369a1; }
+  .tag-ticket   { background: #dcfce7; color: #166534; }
+  .tag-food     { background: #fef9c3; color: #854d0e; }
+  .tag-tip      { background: #fce7f3; color: #9d174d; }
+  .tag-warn     { background: #fee2e2; color: #991b1b; }
+
+  .day-footer {
+    border-top: 1px dashed #e0ddd6;
+    padding: 14px 24px;
+    font-size: 13px;
+    color: #555;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .day-footer .hotel-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* ── SPOTS INFO TABLE ── */
+  .info-table-wrapper { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    background: var(--navy);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e8e4dc;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f8f5ef; }
+  tr:hover td { background: #f0ece4; transition: .15s; }
+
+  /* ── BUDGET ── */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .budget-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(26,39,68,.08);
+  }
+  .budget-category {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: .1em; color: #888; margin-bottom: 4px;
+  }
+  .budget-amount {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 24px;
+    color: var(--navy);
+  }
+  .budget-unit { font-size: 12px; color: #888; margin-left: 4px; }
+  .budget-note { font-size: 12px; color: #666; margin-top: 6px; }
+  .budget-total {
+    background: var(--navy);
+    color: white;
+    border-radius: 16px;
+    padding: 20px;
+    grid-column: 1 / -1;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .budget-total .label { font-size: 14px; opacity: .8; }
+  .budget-total .value {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .check-item {
+    display: flex; align-items: center; gap: 10px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    cursor: pointer;
+    user-select: none;
+    transition: box-shadow .15s;
+  }
+  .check-item:hover { box-shadow: 0 2px 10px rgba(0,0,0,.10); }
+  .check-item input[type=checkbox] {
+    width: 18px; height: 18px; accent-color: var(--mint);
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 13px;
+    margin-top: 40px;
+  }
+  .footer strong { color: white; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--red) 0 20px, var(--gold) 20px 40px, var(--navy) 40px 60px);
+    border: none; margin: 0;
+  }
+
+  /* header colour helpers */
+  .c-red   { background: var(--red);   color: white; }
+  .c-navy  { background: var(--navy);  color: white; }
+  .c-gold  { background: var(--gold);  color: var(--navy); }
+  .c-mint  { background: var(--mint);  color: white; }
+  .c-purple{ background: #7c3aed;      color: white; }
+  .c-teal  { background: #0d9488;      color: white; }
+  .c-rose  { background: #e11d48;      color: white; }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-flag">🇯🇵</div>
+  <h1>Sugi一家<br><span>2026 名古屋</span><br>親子盛夏冒險手冊</h1>
+  <p class="hero-sub">領隊：Sugi ／ 成員：2大2小（8歲雙胞胎）</p>
+  <div class="hero-badges">
+    <span class="badge">📅 2026 / 08 / 05 – 08 / 11</span>
+    <span class="badge">🏨 6晚</span>
+    <span class="badge">🎠 5大主題樂園</span>
+    <span class="badge">🗼 名古屋城 × 神宮</span>
+    <span class="badge">🎰 每日扭蛋 ¥6,000</span>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- ── OVERVIEW ── -->
+<div class="section">
+  <h2 class="section-title">旅程一覽</h2>
+  <div class="overview-grid">
+    <div class="ov-card">
+      <div class="ov-icon">✈️</div>
+      <div class="ov-label">抵達</div>
+      <div class="ov-value">8/5（三）22:00<br>中部國際機場</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🏨</div>
+      <div class="ov-label">住宿</div>
+      <div class="ov-value">東橫INN機場（首尾各1晚）<br>華盛頓R&B新幹線口（4晚）</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🎡</div>
+      <div class="ov-label">主題樂園</div>
+      <div class="ov-value">樂高樂園、鈴鹿賽道<br>名古屋港水族館</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🛤️</div>
+      <div class="ov-label">郊區一日遊</div>
+      <div class="ov-value">伊勢神宮 × 鳥羽<br>（志摩之風特急）</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🎰</div>
+      <div class="ov-label">扭蛋基金</div>
+      <div class="ov-value">每人每日 ¥6,000<br>備足百元硬幣！</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-icon">🌡️</div>
+      <div class="ov-label">氣候提示</div>
+      <div class="ov-value">8月名古屋酷熱<br>必備冷感濕紙巾 + 手持扇</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TIPS ── -->
+<div class="section" style="padding-top:0">
+  <h2 class="section-title">💡 領隊行前錦囊</h2>
+  <div class="tips-box">
+    <h3>🗝️ Sugi必讀提醒</h3>
+    <ul class="tips-list">
+      <li><span class="tip-icon">🎟️</span><div><strong>所有票券請網路預購！</strong>現場購票比網路貴 ¥500–700，且熱門時段易售罄。推薦 Klook / KKday。</div></li>
+      <li><span class="tip-icon">🚂</span><div><strong>志摩之風</strong>（Day 5）特急：乘車日 <strong>1個月前上午10:30</strong>（日本時間）開放搶票，非常熱門！</div></li>
+      <li><span class="tip-icon">🏎️</span><div><strong>鈴鹿賽道Circuit Challenger</strong>（Day 4）需另外購票且有限，強烈建議提前在Klook搶票。</div></li>
+      <li><span class="tip-icon">☀️</span><div>8月名古屋日均氣溫 <strong>35°C+</strong>，帶冷感濕紙巾、手持電風扇、防曬衣，水族館 / 神宮遊覽時務必補水。</div></li>
+      <li><span class="tip-icon">🚇</span><div>市內多用<strong>地鐵一日券</strong>（¥740），Day 3 / Day 6 可大量搭乘，CP值高。持券入名古屋港水族館還折 ¥200。</div></li>
+      <li><span class="tip-icon">🧳</span><div>Day 6 早上退房後<strong>行李寄放</strong>於東橫INN，輕裝遊熱田神宮 + 大須商店街，傍晚再取行李回機場飯店。</div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── DAYS ── -->
+<div class="section" style="padding-top:0">
+  <h2 class="section-title">📅 七天六夜詳細行程</h2>
+  <div class="days-wrapper">
+
+    <!-- DAY 1 -->
+    <div class="day-card">
+      <div class="day-header c-navy" data-emoji="✈️">
+        <div class="day-num">Day 1</div>
+        <div class="day-title-block">
+          <div class="day-date">8月5日（三）</div>
+          <div class="day-title">飛抵名古屋・扭蛋開幕戰</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🛬</div>
+            <div class="spot-info">
+              <div class="spot-name">22:00 中部國際機場（Centrair）抵達</div>
+              <div class="spot-meta">入境後先換日幣、購買 IC 卡（manaca）</div>
+              <div class="spot-tags">
+                <span class="tag tag-tip">🎰 機場4F有扭蛋機，開啟第一戰！</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🍜</div>
+            <div class="spot-info">
+              <div class="spot-name">機場4F美食街 or 24hr便利商店</div>
+              <div class="spot-meta">抵達較晚，輕食補充體力即可</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>東橫INN 中部國際機場1號店（¥10,400，已付）</span>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card">
+      <div class="day-header c-red" data-emoji="🟥">
+        <div class="day-num">Day 2</div>
+        <div class="day-title-block">
+          <div class="day-date">8月6日（四）</div>
+          <div class="day-title">樂高積木幻想世界</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🧱</div>
+            <div class="spot-info">
+              <div class="spot-name">樂高樂園 Legoland Japan（10:00–16:00）</div>
+              <div class="spot-meta">適合 2–12 歲，8 大主題區，1,700 萬塊積木造景</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚆 名古屋站→青波線→金城埠頭站（約30分）</span>
+                <span class="tag tag-ticket">🎟️ 成人 ¥4,500起 / 兒童 ¥3,300起（浮動制，旺季偏高）</span>
+                <span class="tag tag-tip">💡 8月暑假屬旺季，建議一早搶排 THE DRAGON 雲霄飛車</span>
+                <span class="tag tag-food">🍟 必試積木薯條！限定造型超可愛</span>
+                <span class="tag tag-warn">⚠️ 現場買貴 ¥500，務必提前在 Klook/KKday 購買</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>華盛頓R&B飯店 名古屋新幹線口（Check-in 15:00，4晚 TWD14,894，已付）</span>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card">
+      <div class="day-header c-mint" data-emoji="🐋">
+        <div class="day-num">Day 3</div>
+        <div class="day-title-block">
+          <div class="day-date">8月7日（五）</div>
+          <div class="day-title">海洋奇緣 × 古城巡禮</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🐋</div>
+            <div class="spot-info">
+              <div class="spot-name">名古屋港水族館（09:30–13:00）</div>
+              <div class="spot-meta">日本最大水族館，擁有虎鯨、白鯨、海豚、沙丁魚龍捲風</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚇 地鐵名港線→名古屋港站3號出口步行5分</span>
+                <span class="tag tag-ticket">🎟️ 成人 ¥2,030 / 小學生 ¥1,010（4設施共通券 ¥2,440）</span>
+                <span class="tag tag-tip">🎉 8月暑假期間夜間延長至 20:00！17:00後入館 8 折優惠</span>
+                <span class="tag tag-tip">⭐ 必看：虎鯨訓練 × 海豚表演 × 沙丁魚龍捲風（查官網時刻表）</span>
+                <span class="tag tag-warn">⚠️ 週一公休！8/7 是週五，沒問題 ✓</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🏯</div>
+            <div class="spot-info">
+              <div class="spot-name">名古屋城（13:30–16:00）</div>
+              <div class="spot-meta">日本三大名城之一，本丸御殿富麗堂皇；天守閣整修中但外觀壯觀</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚇 地鐵名城線→名古屋城站</span>
+                <span class="tag tag-ticket">🎟️ 成人 ¥500 / 中學生以下免費</span>
+                <span class="tag tag-food">🍦 別忘買忍者冰淇淋！城內限定名物</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🍣</div>
+            <div class="spot-info">
+              <div class="spot-name">晚餐：榮區 蓬萊軒 鰻魚飯</div>
+              <div class="spot-meta">百年老店名古屋必吃！鰻魚飯一吃三吃法，最後再加高湯</div>
+              <div class="spot-tags">
+                <span class="tag tag-warn">⚠️ 排隊人氣店，建議 17:00 前到</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>華盛頓R&B飯店 名古屋新幹線口（含早餐）</span>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card">
+      <div class="day-header c-gold" data-emoji="🏎️">
+        <div class="day-num">Day 4</div>
+        <div class="day-title-block">
+          <div class="day-date">8月8日（六）</div>
+          <div class="day-title">鈴鹿賽道・極速體驗日</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🏎️</div>
+            <div class="spot-info">
+              <div class="spot-name">鈴鹿賽道樂園 Suzuka Circuit Park（10:00–17:00）</div>
+              <div class="spot-meta">F1賽道旁親子主題樂園，30+設施，小學生可開真實迷你賽車！</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚆 近鐵名古屋→白子站（約40分）→三重交通巴士03路（約20分）</span>
+                <span class="tag tag-ticket">🎟️ 入園免費，設施逐項付費 / 一日護照券 ¥5,000起</span>
+                <span class="tag tag-tip">⭐ Circuit Challenger（F1賽道駕駛）名額有限，務必提前Klook預購！</span>
+                <span class="tag tag-tip">🪪 帶孩子辦「駕照卡」，是超棒紀念品</span>
+                <span class="tag tag-warn">⚠️ 週六人多，建議早出發，10:00準時入園</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>華盛頓R&B飯店 名古屋新幹線口（含早餐）</span>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-card">
+      <div class="day-header c-purple" data-emoji="⛩️">
+        <div class="day-num">Day 5</div>
+        <div class="day-title-block">
+          <div class="day-date">8月9日（日）</div>
+          <div class="day-title">志摩之風奢華海景・伊勢神宮</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🚂</div>
+            <div class="spot-info">
+              <div class="spot-name">10:25 搭乘「志摩之風」特急</div>
+              <div class="spot-meta">豪華近鐵特急，可觀賞海景，車內販售限定便當與甜點</div>
+              <div class="spot-tags">
+                <span class="tag tag-warn">⚠️ 乘車日1個月前上午10:30（日本時間）開放預訂，非常搶手！</span>
+                <span class="tag tag-ticket">🎟️ 近鐵特急費用另計（約 ¥1,500–2,000 / 人）</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">⛩️</div>
+            <div class="spot-info">
+              <div class="spot-name">伊勢神宮（內宮）＋おはらい町・おかげ横丁</div>
+              <div class="spot-meta">日本最神聖的神社，必走宇治橋、御正宮；參拜後沿おはらい町老街逛到おかげ横丁，各種伊勢名物小吃與工藝品齊聚</div>
+              <div class="spot-tags">
+                <span class="tag tag-food">🍢 必吃：松阪牛串、伊勢烏龍麵、赤福麻糬</span>
+                <span class="tag tag-food">🍦 紅豆冰淇淋 × 岩牡蠣（夏季限定！）</span>
+                <span class="tag tag-tip">💡 おはらい町全長約800m，慢慢逛輕鬆花2小時</span>
+                <span class="tag tag-tip">🎁 孩子愛的：招財貓、忍者道具、伊勢限定扭蛋！</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🐸</div>
+            <div class="spot-info">
+              <div class="spot-name">二見興玉神社（夫婦岩・青蛙神社）</div>
+              <div class="spot-meta">海濱神社，以兩塊巨岩「夫婦岩」和滿境的青蛙擺飾聞名；傳統上伊勢參拜前會先在此淨身，祈求夫婦圓滿、一路平安</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚆 JR參宮線→二見浦站，步行約10分鐘</span>
+                <span class="tag tag-ticket">🎟️ 免費參拜</span>
+                <span class="tag tag-tip">🐸 境內有數不清的青蛙石像，「無事にかえる（平安歸來）」是孩子超愛找的打卡點！</span>
+                <span class="tag tag-tip">🌊 夏日可沿海岸步道散步，眺望夫婦岩海景</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🚆</div>
+            <div class="spot-info">
+              <div class="spot-name">回程：近鐵急行（一般版）</div>
+              <div class="spot-meta">比志摩之風便宜許多，回名古屋約2小時</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>華盛頓R&B飯店 名古屋新幹線口（含早餐）</span>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div class="day-card">
+      <div class="day-header c-teal" data-emoji="🛍️">
+        <div class="day-num">Day 6</div>
+        <div class="day-title-block">
+          <div class="day-date">8月10日（一）</div>
+          <div class="day-title">熱田神宮 × 大須商店街・最後衝刺</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">🌿</div>
+            <div class="spot-info">
+              <div class="spot-name">熱田神宮（09:00–11:00）</div>
+              <div class="spot-meta">日本三大神宮之一，鎮守「草薙劍」，1,300年神木必看</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚇 地鐵名城線→神宮西站 / JR熱田站</span>
+                <span class="tag tag-food">🍡 早参拜後吃「蓬餅」（名物麻糬）</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🛍️</div>
+            <div class="spot-info">
+              <div class="spot-name">大須商店街（11:30–16:00）</div>
+              <div class="spot-meta">名古屋最活力商店街，古著、動漫、小吃、電器雲集</div>
+              <div class="spot-tags">
+                <span class="tag tag-transport">🚇 地鐵鶴舞線→大須觀音站</span>
+                <span class="tag tag-tip">🎰 清空最後的扭蛋基金！此地扭蛋機密度爆表</span>
+                <span class="tag tag-food">🐔 必吃世界的山將雞翅</span>
+              </div>
+            </div>
+          </div>
+          <div class="spot">
+            <div class="spot-icon">🏨</div>
+            <div class="spot-info">
+              <div class="spot-name">傍晚：移動至機場東橫INN</div>
+              <div class="spot-meta">從大須搭地鐵 → 名古屋站 → 名鐵至中部國際機場，約40分鐘</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="day-footer">
+        <span class="hotel-icon">🏨</span>
+        <span><strong>住宿：</strong>東橫INN 中部國際機場1號店（¥11,675，已付）</span>
+      </div>
+    </div>
+
+    <!-- DAY 7 -->
+    <div class="day-card">
+      <div class="day-header c-rose" data-emoji="👋">
+        <div class="day-num">Day 7</div>
+        <div class="day-title-block">
+          <div class="day-date">8月11日（二）</div>
+          <div class="day-title">平安返台 🙏</div>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="spots">
+          <div class="spot">
+            <div class="spot-icon">⏰</div>
+            <div class="spot-info">
+              <div class="spot-name">07:55 集合出發，步行至第二航廈</div>
+              <div class="spot-meta">09:55 班機回台灣</div>
+              <div class="spot-tags">
+                <span class="tag tag-warn">⚠️ 二航廈安檢人潮多，請至少提前2小時抵達（建議07:55前到）</span>
+                <span class="tag tag-tip">💡 最後一次：機場4F紀念品伴手禮補貨！</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /days-wrapper -->
+</div>
+
+<!-- ── SPOTS INFO ── -->
+<div class="section">
+  <h2 class="section-title">🔍 景點資訊速查表</h2>
+  <div class="info-table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>景點</th>
+          <th>地鐵/交通</th>
+          <th>票價（成人）</th>
+          <th>票價（8歲兒童）</th>
+          <th>開放時間</th>
+          <th>休館日</th>
+          <th>建議停留</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🧱 <strong>樂高樂園</strong></td>
+          <td>青波線 金城埠頭站</td>
+          <td>¥4,500–6,700（浮動）</td>
+          <td>¥3,300起</td>
+          <td>10:00–16:00（平日）<br>10:00–17:00（假日）</td>
+          <td>無固定休館</td>
+          <td>6–7小時</td>
+        </tr>
+        <tr>
+          <td>🐋 <strong>名古屋港水族館</strong></td>
+          <td>地鐵名港線 名古屋港站3號出口步行5分</td>
+          <td>¥2,030（4設施共通¥2,440）</td>
+          <td>小學生 ¥1,010</td>
+          <td>09:30–17:30（暑假延長至20:00）</td>
+          <td>每週一（假日順延）</td>
+          <td>4–5小時</td>
+        </tr>
+        <tr>
+          <td>🏯 <strong>名古屋城</strong></td>
+          <td>地鐵名城線 名古屋城站</td>
+          <td>¥500</td>
+          <td>中學生以下免費</td>
+          <td>09:00–16:30</td>
+          <td>12/29–1/1</td>
+          <td>1.5–2小時</td>
+        </tr>
+        <tr>
+          <td>🏎️ <strong>鈴鹿賽道樂園</strong></td>
+          <td>近鐵→白子站→巴士03路（約20分）</td>
+          <td>入園免費，設施逐項付費<br>一日護照券約 ¥5,000</td>
+          <td>一日護照券約 ¥3,800</td>
+          <td>10:00–17:00（假日提早至09:30）</td>
+          <td>不定期，查官網</td>
+          <td>全天</td>
+        </tr>
+        <tr>
+          <td>⛩️ <strong>伊勢神宮（內宮）</strong></td>
+          <td>近鐵→伊勢市站→巴士</td>
+          <td>免費</td>
+          <td>免費</td>
+          <td>05:00–18:00</td>
+          <td>無休</td>
+          <td>1.5–2小時</td>
+        </tr>
+        <tr>
+          <td>🐸 <strong>二見興玉神社（夫婦岩）</strong></td>
+          <td>JR參宮線 二見浦站步行10分</td>
+          <td>免費</td>
+          <td>免費</td>
+          <td>24小時開放</td>
+          <td>無休</td>
+          <td>45–60分</td>
+        </tr>
+        <tr>
+          <td>🌿 <strong>熱田神宮</strong></td>
+          <td>地鐵名城線 神宮西站</td>
+          <td>免費</td>
+          <td>免費</td>
+          <td>24小時（本殿 05:00–17:00）</td>
+          <td>無休</td>
+          <td>1–1.5小時</td>
+        </tr>
+        <tr>
+          <td>🛍️ <strong>大須商店街</strong></td>
+          <td>地鐵鶴舞線 大須觀音站</td>
+          <td>免費</td>
+          <td>免費</td>
+          <td>各店不同（約10:00–20:00）</td>
+          <td>各店不同</td>
+          <td>2–4小時</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── BUDGET ── -->
+<div class="section">
+  <h2 class="section-title">💴 預算統計看板</h2>
+  <div class="budget-grid">
+    <div class="budget-card">
+      <div class="budget-category">住宿（已付）</div>
+      <div class="budget-amount">~TWD<span class="budget-unit"></span></div>
+      <div class="budget-amount" style="font-size:20px">19,800</div>
+      <div class="budget-note">東橫INN機場×2晚 + 華盛頓R&B×4晚</div>
+    </div>
+    <div class="budget-card">
+      <div class="budget-category">景點門票（預估）</div>
+      <div class="budget-amount">¥<span style="font-size:20px">60,000</span></div>
+      <div class="budget-note">樂高+水族館+名古屋城+鈴鹿+真珠島×4人</div>
+    </div>
+    <div class="budget-card">
+      <div class="budget-category">交通費（預估）</div>
+      <div class="budget-amount">¥<span style="font-size:20px">25,000</span></div>
+      <div class="budget-note">地鐵一日券×多天 + 近鐵 + 志摩之風</div>
+    </div>
+    <div class="budget-card">
+      <div class="budget-category">扭蛋基金（6天×2人）</div>
+      <div class="budget-amount">¥<span style="font-size:20px">72,000</span></div>
+      <div class="budget-note">每人每日 ¥6,000 × 2小孩 × 6天</div>
+    </div>
+    <div class="budget-card">
+      <div class="budget-category">餐費（預估）</div>
+      <div class="budget-amount">¥<span style="font-size:20px">40,000</span></div>
+      <div class="budget-note">含蓬萊軒鰻魚飯、松阪牛串等</div>
+    </div>
+    <div class="budget-total">
+      <div>
+        <div class="label">預估旅費總計（不含機票）</div>
+        <div style="font-size:12px;opacity:.6;margin-top:4px">已付住宿 TWD19,894 + 日圓花費約 ¥197,000</div>
+      </div>
+      <div class="value">~TWD 75,000</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHECKLIST ── -->
+<div class="section">
+  <h2 class="section-title">✅ 行前準備清單</h2>
+  <div class="checklist">
+    <label class="check-item"><input type="checkbox"> <span>樂高樂園門票（Klook/KKday）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>名古屋港水族館門票</span></label>
+    <label class="check-item"><input type="checkbox"> <span>鈴鹿賽道一日護照券</span></label>
+    <label class="check-item"><input type="checkbox"> <span>鈴鹿 Circuit Challenger 票（限量！）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>志摩之風特急座位（1個月前10:30搶）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>名古屋城門票（建議網購省時）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>蓬萊軒鰻魚飯訂位</span></label>
+    <label class="check-item"><input type="checkbox"> <span>manaca IC卡（機場購買）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>換日幣（建議台灣先換部分）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>準備大量百元硬幣（扭蛋用）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>冷感濕紙巾 × 大量</span></label>
+    <label class="check-item"><input type="checkbox"> <span>手持電風扇 × 4</span></label>
+    <label class="check-item"><input type="checkbox"> <span>防曬乳 SPF50+</span></label>
+    <label class="check-item"><input type="checkbox"> <span>薄長袖（神宮參拜、防曬）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>輕便背包（樂園用）</span></label>
+    <label class="check-item"><input type="checkbox"> <span>確認各景點當日表演時刻表</span></label>
+    <label class="check-item"><input type="checkbox"> <span>下載名古屋地鐵APP</span></label>
+    <label class="check-item"><input type="checkbox"> <span>海外旅遊平安險</span></label>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <strong>🇯🇵 Sugi一家 2026 名古屋親子盛夏冒險</strong><br>
+  <span style="margin-top:8px;display:block">2026.08.05 – 08.11 ／ 本手冊由 Claude AI 輔助製作</span>
+  <span style="margin-top:4px;display:block;font-size:11px">票價及時間以官網最新公告為準，出發前請再次確認</span>
+</div>
+
+</body>
+</html>
