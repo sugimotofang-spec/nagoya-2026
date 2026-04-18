@@ -25,7 +25,7 @@
 
   /* ── HERO ── */
   .hero {
-    background: var(--navy);
+    background: linear-gradient(160deg, #0f1e3d 0%, #1a2e5a 55%, #162440 100%);
     color: white;
     text-align: center;
     padding: 64px 24px 56px;
@@ -35,38 +35,62 @@
   .hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(232,52,28,.35) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(61,184,156,.2) 0%, transparent 50%);
+    background:
+      radial-gradient(ellipse at 75% 20%, rgba(245,166,35,.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 15% 85%, rgba(61,184,156,.12) 0%, transparent 50%);
   }
-  .hero-flag { font-size: 56px; margin-bottom: 8px; position: relative; }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg, transparent 0px, transparent 18px,
+      rgba(255,255,255,.025) 18px, rgba(255,255,255,.025) 19px
+    );
+    pointer-events: none;
+  }
+  .hero-flag { font-size: 52px; margin-bottom: 10px; position: relative; z-index: 1; }
   .hero h1 {
-    font-family: 'Dela Gothic One', sans-serif;
-    font-size: clamp(28px, 6vw, 52px);
-    letter-spacing: .04em;
-    line-height: 1.2;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(24px, 5.5vw, 46px);
+    letter-spacing: .08em;
+    line-height: 1.35;
     position: relative;
+    z-index: 1;
     color: #ffffff;
-    text-shadow: 0 2px 18px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.5);
   }
-  .hero h1 span { color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .hero h1 span { color: #F5C842; display: inline-block; }
+  .hero h1 .sub-line {
+    display: block;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    font-size: clamp(13px, 2.2vw, 18px);
+    letter-spacing: .25em;
+    color: rgba(255,255,255,.7);
+    margin-top: 6px;
+  }
   .hero-sub {
-    margin-top: 16px;
-    font-size: 15px;
-    color: rgba(255,255,255,.95);
-    text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    margin-top: 14px;
+    font-size: 14px;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: rgba(255,255,255,.72);
     position: relative;
+    z-index: 1;
+    letter-spacing: .04em;
   }
   .hero-badges {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-    margin-top: 24px; position: relative;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin-top: 22px; position: relative; z-index: 1;
   }
   .badge {
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 99px;
-    padding: 6px 18px;
-    font-size: 13px;
-    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 12.5px;
+    font-family: 'Noto Sans TC', sans-serif;
+    letter-spacing: .03em;
+    color: rgba(255,255,255,.88);
   }
 
   /* ── OVERVIEW CARDS ── */
@@ -309,14 +333,14 @@
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-flag">🇯🇵</div>
-  <h1>Sugi一家<br><span>2026 名古屋</span><br>親子盛夏冒險手冊</h1>
+  <h1>Sugi 一家<span class="sub-line">2026 Nagoya Family Adventure</span><span>名古屋盛夏親子冒險手冊</span></h1>
   <p class="hero-sub">領隊：Sugi ／ 成員：2大2小（8歲雙胞胎）</p>
   <div class="hero-badges">
     <span class="badge">📅 2026 / 08 / 05 – 08 / 11</span>
     <span class="badge">🏨 6晚</span>
     <span class="badge">🎠 5大主題樂園</span>
     <span class="badge">🗼 名古屋城 × 神宮</span>
-    <span class="badge">🎰 每日扭蛋 ¥6,000</span>
+    <span class="badge">🎰 扭蛋預算 共 ¥12,000</span>
   </div>
 </div>
 <hr class="divider">
@@ -347,8 +371,8 @@
     </div>
     <div class="ov-card">
       <div class="ov-icon">🎰</div>
-      <div class="ov-label">扭蛋基金</div>
-      <div class="ov-value">每人每日 ¥6,000<br>備足百元硬幣！</div>
+      <div class="ov-label">扭蛋預算</div>
+      <div class="ov-value">每人 ¥6,000 × 2小孩<br>全程合計 ¥12,000</div>
     </div>
     <div class="ov-card">
       <div class="ov-icon">🌡️</div>
@@ -792,9 +816,9 @@
       <div class="budget-note">地鐵一日券×多天 + 近鐵 + 志摩之風</div>
     </div>
     <div class="budget-card">
-      <div class="budget-category">扭蛋基金（6天×2人）</div>
-      <div class="budget-amount">¥<span style="font-size:20px">72,000</span></div>
-      <div class="budget-note">每人每日 ¥6,000 × 2小孩 × 6天</div>
+      <div class="budget-category">扭蛋預算（全程兩小孩）</div>
+      <div class="budget-amount">¥<span style="font-size:20px">12,000</span></div>
+      <div class="budget-note">每人 ¥6,000 × 2小孩，七天行程共計</div>
     </div>
     <div class="budget-card">
       <div class="budget-category">餐費（預估）</div>
@@ -804,9 +828,9 @@
     <div class="budget-total">
       <div>
         <div class="label">預估旅費總計（不含機票）</div>
-        <div style="font-size:12px;opacity:.6;margin-top:4px">已付住宿 TWD19,894 + 日圓花費約 ¥197,000</div>
+        <div style="font-size:12px;opacity:.6;margin-top:4px">已付住宿 TWD19,894 + 日圓花費約 ¥137,000</div>
       </div>
-      <div class="value">~TWD 75,000</div>
+      <div class="value">~TWD 57,000</div>
     </div>
   </div>
 </div>
